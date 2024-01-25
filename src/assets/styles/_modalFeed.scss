@@ -1,0 +1,338 @@
+@import "./_svg";
+@import "./_mixin";
+
+.myfeed {
+  display: flex;
+  width: 100%;
+}
+
+.feedImg {
+  width: 100%;
+  display: flex;
+  min-width: 50%;
+  min-height: 50%;
+
+  .swiper {
+    width: 100%;
+    @include _swiper__navigation;
+  }
+
+  img {
+    object-fit: cover;
+    height: 100%;
+  }
+}
+
+.feedArea {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  .feedProfile {
+    display: flex;
+  }
+  .feedClose {
+    @include icon(arrow-right, #3e3a39, 25px, 25px);
+    display: none;
+    transform: rotate(88deg);
+  }
+}
+.feedCloses {
+  width: 34px;
+  height: 34px;
+  background: #3e3a39;
+  border-radius: 5px;
+}
+
+.feedAreaInner {
+  overflow-y: scroll;
+  display: block;
+}
+
+.feedAreaInner::-webkit-scrollbar {
+  display: none;
+}
+
+.myName {
+  display: flex;
+  align-items: center;
+  padding: 20px 20px 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  position: sticky;
+  top: 0; /* 상단에 고정 */
+  z-index: 10; /* 다른 내용 위에 표시되도록 z-index 설정 */
+  background: white;
+
+  p {
+    font-size: 15px;
+    font-weight: 900;
+    padding: 0 0 0 10px;
+    color: black;
+  }
+}
+
+.feedProfile {
+  .feedProfile > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  i {
+    display: flex;
+    background: no-repeat;
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+    border-radius: 50%;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    margin-right: 5px !important;
+    position: relative;
+    @include _profile;
+    // @include icon(userPlus, #dbdbdb, 30px, 30px);
+  }
+}
+
+.myfeedTitle p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 900;
+  padding: 10px 10px 10px 20px;
+  > div {
+    > button {
+      margin: 0 0.3rem;
+      padding: 0.3rem 0.8rem;
+      background-color: #f0f0f0;
+      border-radius: 0.8rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #484848;
+      vertical-align: middle;
+    }
+  }
+  > input {
+    width: 64%;
+    padding: 4px 0;
+    border: 0;
+    color: #000000;
+    font-size: 18px;
+    font-weight: 900;
+    &::placeholder {
+      color: #000000;
+    }
+  }
+}
+
+.myfeedContent {
+  padding: 0 30px 20px 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
+  p {
+    font-size: 14px;
+    > textarea {
+      width: 100%;
+      height: 100%;
+      font-size: 14px;
+      color: #484848;
+      resize: none;
+    }
+    & + p {
+      margin-top: 8px;
+      > span {
+        display: inline-block;
+        margin-right: 8px;
+        margin-top: 6px;
+        padding: 4px 6px 2px 6px;
+        font-size: 12px;
+        background-color: #9fa0a0;
+        border-radius: 4px;
+        color: #ffffff;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.myMent {
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  padding: 14px 0 14px 20px;
+
+  input {
+    border-radius: 20px;
+    width: 100%;
+    height: 30px;
+    margin: 0 0 0 4px;
+    background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 18 16" fill="none"%3E%3Cpath d="M13.1692 8.9303C12.5692 8.9303 12.0892 8.45028 12.0892 7.85028C12.0892 7.25028 12.5692 6.77032 13.1692 6.77032C13.7692 6.77032 14.2492 7.25028 14.2492 7.85028C14.2592 8.45028 13.7692 8.9303 13.1692 8.9303ZM8.84918 8.9303C8.24918 8.9303 7.76923 8.45028 7.76923 7.85028C7.76923 7.25028 8.24918 6.77032 8.84918 6.77032C9.44918 6.77032 9.9292 7.25028 9.9292 7.85028C9.9292 8.45028 9.44918 8.9303 8.84918 8.9303ZM4.51923 8.9303C3.91923 8.9303 3.43921 8.45028 3.43921 7.85028C3.43921 7.25028 3.91923 6.77032 4.51923 6.77032C5.11923 6.77032 5.59918 7.25028 5.59918 7.85028C5.59918 8.45028 5.11923 8.9303 4.51923 8.9303ZM8.84918 0.820312C4.06918 0.820312 0.199219 3.97028 0.199219 7.85028C0.199219 9.53028 0.919211 11.0603 2.12921 12.2703C1.70921 13.9703 0.289236 15.4903 0.279236 15.5103C0.209236 15.5903 0.189187 15.7003 0.229187 15.8003C0.269187 15.9003 0.369187 15.9603 0.479187 15.9603C2.71919 15.9603 4.39919 14.8903 5.22919 14.2203C6.33919 14.6403 7.55919 14.8803 8.85919 14.8803C13.6392 14.8803 17.5092 11.7303 17.5092 7.85028C17.4992 3.97028 13.6292 0.820312 8.84918 0.820312Z" fill="%239FA0A0"/%3E%3C/svg%3E');
+    background-repeat: no-repeat;
+    background-position: 10px;
+    border-color: #b3b4b4;
+    padding-left: 42px;
+    border: 0;
+  }
+}
+.likeHearts {
+  padding: 0px 18px 0px 18px;
+  .likeHeart {
+    @include icon(heart, #3e3a39, 15px, 15px);
+    padding: 8px;
+    transform: translateY(11px);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+}
+.likeHeart.active {
+  @include icon(heart-fill, red, 10px, 10px); /* 활성 상태일 때 채워진 하트 */
+}
+
+.userComments {
+  .userComment {
+    padding: 10px 10px 10px 20px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    > div {
+      display: flex;
+    }
+
+    .userNames {
+      padding: 0 0 0 10px;
+      span {
+        font-size: 13px;
+      }
+      .userName {
+        font-weight: 900;
+        color: black;
+        display: flex;
+        display: inline;
+        font-size: 14px;
+        padding: 0 5px 0 0;
+      }
+    }
+  }
+}
+.replyPart {
+  span {
+    font-size: 10px !important;
+    padding-right: 10px;
+    font-weight: 900;
+  }
+  .deleteReply {
+    @include icon(deletereply, #3e3a39, 10px, 10px);
+    cursor: pointer;
+  }
+}
+.userMent {
+  width: 100%;
+  margin: 10px 0 0 0;
+}
+@media screen and (max-width: 994px) {
+  .myfeed {
+    height: 100%;
+    justify-content: space-between;
+    .feedImg {
+      min-height: calc(100% - 64px);
+      height: calc(100% - 64px);
+    }
+    width: 100%;
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 994) {
+  .feedImg {
+    width: 100%;
+    height: 100%;
+  }
+}
+@media screen and (max-width: 994px) {
+  .feedAreaInner {
+    transform: translateY(0);
+    position: absolute;
+    transition: height 0.7s ease !important;
+    height: 100%;
+    display: none;
+    opacity: 0.9;
+  }
+  .feedAreaInner.focused {
+    height: calc(90% - 64px);
+    bottom: 0;
+    z-index: 100;
+    background: white;
+    display: block;
+    transition: height 0.7s ease !important;
+    bottom: 64px;
+    width: 100%;
+    border-radius: 16px 16px 0 0;
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3),
+      0 2px 6px 2px rgba(60, 64, 67, 0.15);
+  }
+}
+@media screen and (max-width: 994px) {
+  .myMent {
+    z-index: 100;
+    background: white;
+    box-shadow: black;
+  }
+}
+@media screen and (max-width: 994px) {
+  .feedClose {
+    display: block !important;
+    margin-left: auto;
+    cursor: pointer;
+  }
+}
+.feedAreaInner.closed {
+  height: 0;
+  overflow: hidden;
+}
+.noComment {
+  text-align: center;
+  h1 {
+    font-size: 30px;
+    margin-top: 40px;
+    color: #a0a0a0;
+  }
+  p {
+    margin-top: 20px;
+    font-size: 20px;
+    color: #a0a0a0;
+  }
+}
+.submitBtn {
+  button {
+    padding: 0px 20px 0 0;
+    @include icon(submitArrow, rgb(115, 115, 115), 30px, 30px);
+    margin: 0 20px;
+    transform: rotate(90deg);
+  }
+}
+.lower {
+  display: flex;
+  flex-direction: column;
+  @include size(sm) {
+      padding: 0 12px;
+  }
+  .likes {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .heart {
+          position: relative;
+          margin-left: 4px;
+          cursor: pointer;
+          z-index: 2;
+          @include icon(heart, #464646, 24px, 24px);
+          & + a {
+              font-size: 14px;
+              font-weight: 900;
+              cursor: pointer;
+          }
+      }
+  }
+}

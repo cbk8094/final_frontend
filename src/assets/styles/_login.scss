@@ -1,0 +1,423 @@
+@import "_svg";
+@import "_mixin";
+
+.log-top {
+  padding-top: 5%;
+  justify-content: center;
+  align-items: center;
+}
+
+.log-logo-position {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 2.5rem;
+  .log-logo {
+    @include icon(logo, #464646, 300px, 100px);
+  }
+}
+.logform-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.log-sign-position {
+  display: flex;
+  justify-content: center;
+}
+.log-sign {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  .log-title {
+    margin-right: 3rem;
+    padding-bottom: 10px;
+    transition: 0.2s ease-in-out;
+    a {
+      color: #c9caca;
+      font-size: 30px;
+      font-weight: 600;
+    }
+  }
+  .sign-title {
+    font-size: 30px;
+    font-weight: bolder;
+    margin-left: 3rem;
+    padding-bottom: 10px;
+    transition: all 0.2s ease-in-out;
+    a {
+      color: #c9caca;
+      font-size: 30px;
+      font-weight: 600;
+    }
+  }
+  .log-title.active {
+    a {
+      color: #222;
+    }
+  }
+}
+.sign-title.active {
+  a {
+    color: #222;
+  }
+}
+
+.logo-position {
+  display: flex;
+  justify-content: center;
+}
+.logform-position {
+  display: flex;
+  justify-content: center;
+}
+.guest {
+  margin-top: 1rem;
+  text-align: center;
+}
+.logform-input {
+  position: relative;
+  border-radius: 100px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 1.5rem;
+  .email-button {
+    position: absolute;
+    top: 55%;
+    left: 20px;
+    @include icon(email, #898989, 18px, 18px);
+    @include _hide;
+    transform: translateY(36%) translateX(-5%);
+  }
+  .nick-button {
+    position: absolute;
+    top: 55%;
+    left: 20px;
+    @include icon(user, #898989, 18px, 18px);
+    @include _hide;
+    transform: translateY(10%);
+  }
+  .log-input-email {
+    margin-top: 1rem;
+    border: 1px solid #c9caca;
+    padding: 15px 45px;
+    border-radius: 30px;
+    width: 450px;
+    transition: 0.2s ease-in-out;
+    &::placeholder {
+      font-size: 15px;
+      color: #898989;
+    }
+    @include size(sm) {
+      width: 300px;
+      margin: 0 auto;
+      & + .email-button {
+        top: 48%;
+      }
+    }
+  }
+  .pw-button {
+    position: absolute;
+    top: 55%;
+    left: 20px;
+    @include icon(pw, #898989, 18px, 18px);
+    @include _hide;
+    transform: translateY(-5%);
+  }
+  .log-input-pw {
+    border: 1px solid #c9caca;
+    padding: 15px 45px;
+    border-radius: 30px;
+    width: 450px;
+    transition: 0.2s ease-in-out;
+    &::placeholder {
+      font-size: 15px;
+      color: #898989;
+    }
+    @include size(sm) {
+      width: 300px;
+      margin: 0 auto;
+    }
+  }
+  input:hover {
+    border-color: #222;
+  }
+  input:focus {
+    border-color: #222;
+  }
+}
+
+.btn-position {
+  padding-top: 4rem;
+  display: flex;
+  justify-content: center;
+  .log-btn {
+    background-color: #464646;
+    padding: 15px 120px;
+    border-radius: 100px;
+    color: #fff;
+    transition: 0.2s ease-in-out;
+  }
+  .log-btn:hover {
+    background-color: #000;
+  }
+  .signup-btn {
+    background-color: #464646;
+    padding: 15px 120px;
+    border-radius: 100px;
+    color: #fff;
+    transition: 0.2s ease-in-out;
+  }
+  .signup-btn:hover {
+    background-color: #000;
+  }
+}
+
+.log-find {
+  display: flex;
+  justify-content: center;
+  .find-btn {
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    background-color: #464646;
+    width: 287.96px;
+    height: 48.37px;
+    border-radius: 100px;
+    color: #fff;
+    transition: 0.2s ease-in-out;
+  }
+  .find-btn:hover {
+    background-color: #000;
+  }
+  p {
+    color: #000;
+    padding-left: 40px;
+    padding-right: 40px;
+    transition: 0.3s ease-in-out;
+  }
+  p:hover {
+    opacity: 0.5;
+  }
+}
+.log-sns {
+  display: flex;
+  justify-content: center;
+  li {
+    margin-left: 25px;
+    margin-right: 25px;
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+    transition: 0.2s ease-in-out;
+  }
+  li:first-child {
+    background-color: #f1d900;
+  }
+  li:nth-last-child(2) {
+    background-color: #03c75a;
+  }
+  li:last-child {
+    background-color: #c9caca;
+  }
+  li:hover {
+    opacity: 0.5;
+  }
+}
+.signup-sns {
+  padding-top: 2rem;
+  display: flex;
+  justify-content: center;
+  li {
+    margin-left: 25px;
+    margin-right: 25px;
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+    transition: 0.2s ease-in-out;
+  }
+  li:first-child {
+    background-color: #f1d900;
+  }
+  li:nth-last-child(2) {
+    background-color: #03c75a;
+  }
+  li:last-child {
+    background-color: #c9caca;
+  }
+  li:hover {
+    opacity: 0.5;
+  }
+}
+
+.log-footer {
+  margin-bottom: 60px;
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  color: #898989;
+
+  ul {
+    display: flex;
+    justify-content: center;
+
+    li {
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-bottom: 5px;
+      transition: 0.2s ease-in-out;
+    }
+    li:hover {
+      color: #464646;
+    }
+  }
+}
+
+// signup
+.email-position {
+  display: flex;
+  @include size(sm) {
+    margin: 0 auto;
+  }
+  .verify-input-email {
+    border: 1px solid #c9caca;
+    padding: 15px 20px;
+    border-radius: 30px;
+    height: 50px;
+    width: 350px;
+    transition: 0.2s ease-in-out;
+    &::placeholder {
+      font-size: 15px;
+      color: #898989;
+    }
+  }
+  .email-confirm {
+    margin-left: 15px;
+    padding: 15px 25px;
+    background-color: #898989;
+    color: #fff;
+    border-radius: 50px;
+    transition: 0.3s ease-in-out;
+  }
+  .email-confirm:hover {
+    background-color: #646464;
+  }
+  .email-veri-button {
+    margin-top: 1rem;
+    margin-left: 10px;
+    padding: 15px 15px;
+    background-color: #898989;
+    color: #fff;
+    border-radius: 50px;
+    transition: 0.3s ease-in-out;
+  }
+  .email-veri-button:hover {
+    background-color: #646464;
+  }
+}
+.signup-input {
+  position: relative;
+  border-radius: 100px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 1.3rem;
+  transition: 0.2s ease-in-out;
+  .email-button {
+    position: absolute;
+    top: 55%;
+    left: 19px;
+    @include icon(email, #898989, 18px, 18px);
+    @include _hide;
+    transform: translateY(20%);
+  }
+  .signup-input-email {
+    margin-top: 1rem;
+    border: 1px solid #c9caca;
+    padding: 15px 45px;
+    border-radius: 30px;
+    width: 345px;
+    transition: 0.2s ease-in-out;
+    &::placeholder {
+      font-size: 15px;
+      color: #898989;
+    }
+    @include size(sm) {
+      width: 240px;
+    }
+  }
+  .nick-button {
+    position: absolute;
+    top: 55%;
+    left: 20px;
+    @include icon(user, #898989, 18px, 18px);
+    @include _hide;
+    transform: translateY(-45%);
+  }
+  .pw-button {
+    position: absolute;
+    top: 55%;
+    left: 20px;
+    @include icon(pw, #898989, 18px, 18px);
+    @include _hide;
+    transform: translateY(-8%);
+  }
+  .pw-button2 {
+    position: absolute;
+    top: 55%;
+    left: 20px;
+    @include icon(pw, #898989, 18px, 18px);
+    @include _hide;
+    transform: translateY(-35%);
+  }
+  .signup-input-pw {
+    border: 1px solid #c9caca;
+    padding: 15px 45px;
+    border-radius: 30px;
+    width: 450px;
+    transition: 0.2s ease-in-out;
+    &::placeholder {
+      font-size: 15px;
+      color: #898989;
+    }
+    @include size(sm) {
+      margin: 0 auto;
+      width: 336px;
+    }
+  }
+  .signup-input-nick {
+    border: 1px solid #c9caca;
+    padding: 15px 45px;
+    border-radius: 30px;
+    width: 450px;
+    transition: 0.2s ease-in-out;
+    &::placeholder {
+      font-size: 15px;
+      color: #898989;
+    }
+    @include size(sm) {
+      margin: 0 auto;
+      width: 336px;
+    }
+  }
+  .signup-input-check {
+    border: 1px solid #c9caca;
+    padding: 15px 45px;
+    border-radius: 30px;
+    width: 450px;
+    transition: 0.2s ease-in-out;
+    &::placeholder {
+      font-size: 15px;
+      color: #898989;
+    }
+    @include size(sm) {
+      margin: 0 auto;
+      width: 336px;
+    }
+  }
+  input:hover {
+    border-color: #222;
+  }
+  input:focus {
+    border-color: #222;
+  }
+}

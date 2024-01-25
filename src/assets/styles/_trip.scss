@@ -1,0 +1,760 @@
+@import './svg';
+@import './mixin';
+
+$orders: one, two, three, four, five;
+
+.trip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    .placesSearch {
+        $width: 235px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 18px 24px;
+        z-index: 99;
+        @include size(lg) {
+            padding: 9px 32px;
+            background: #FFFFFF;
+            right: 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2), 0 -1px 0px rgba(0,0,0,0.02);
+        }
+        input {
+            width: 186px;
+            padding: 12px 32px 8px 34px;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2), 0 -1px 0px rgba(0,0,0,0.02);
+            background-color: #ffffff;
+            font-size: 14px;
+            font-weight: 600;
+            border: 0;
+            @include size(lg) {
+                width: 100%;
+                padding-right: 42px;
+                box-shadow: none;
+            }
+            & + button[type='submit'] {
+                position: absolute;
+                top: 28px;
+                left: 35px;
+                @include _hide;
+                @include icon(search, #8A8A8A, 16px, 16px);
+                @include size(lg) {
+                    left: auto;
+                    top: 20px;
+                    right: 30px;
+                }
+                & + button {
+                    position: absolute;
+                    top: 28px;
+                    right: 36px;
+                    @include _hide;
+                    @include icon(add, #484848, 14px, 14px);
+                    transform: rotate(45deg);
+                    @include size(lg) {
+                        top: 20px;
+                        right: 58px;
+                    }
+                }
+            }
+        }
+        & + .placesList {
+            position: absolute;
+            top: 69px;
+            left: 0;
+            bottom: 32px;
+            width: $width;
+            padding: 12px 20px 20px;
+            background-color: #EFEFEF;
+            overflow-y: auto;
+            z-index: 2;
+            opacity: 0;
+            pointer-events: none;
+            @include size(lg) {
+                position: fixed;
+                bottom: 0;
+                top: auto;
+                height: 50%;
+                width: 100%;
+                padding-bottom: 32px;
+                background-color: #FFFFFF;
+                box-shadow: 0 1px 2px rgba(60, 64, 67, .3), 0 2px 6px 2px rgba(60, 64, 67, .15);
+            }
+            @include size(sm) {
+                bottom: 56px;
+                height: calc(50% - 28px);
+                box-shadow: none;
+            }
+            li {
+                position: relative;
+                padding: 10px 28px 10px 0;
+                border-bottom: 1px solid #E1E1E1;
+                transform: translateX(-$width);
+                opacity: 0;
+                @include size(lg) {
+                    padding: 8px 28px 6px 0;
+                    transform: translateX(0);
+                    transform: translateY($width);
+                }
+            }
+            & + .placePage {
+                display: none;
+            }
+        }
+        &.active {
+            background-color: #DDDDDD;
+            @include size(lg) {
+                background-color: #FFFFFF;
+            }
+            > input {
+                box-shadow: none;
+            }
+            & + .placesList {
+                opacity: 1;
+                pointer-events: initial;
+                .close {
+                    display: none;
+                    position: fixed;
+                    left: 50%;
+                    top: auto;
+                    bottom: 43.6%;
+                    right: auto;
+                    width: auto;
+                    height: auto;
+                    margin: 0;
+                    opacity: .8;
+                    transform: translateX(-50%);
+                    background-color: transparent;
+                    &::after {
+                        margin: .6em 1em;
+                        padding: 0;
+                        width: 72px;
+                        height: 4px;
+                        background-image: none;
+                        background-color: #3E3A39;
+                        border-radius: 14px;
+                    }
+                    @include size(lg) {
+                        display: block;
+                        bottom: 47.4%;
+                    }
+                    @include size(sm) {
+                        bottom: 50.4%;
+                    }
+                }
+                li {
+                    transform: translateX(0);
+                    opacity: .6;
+                    @for $i from 1 through 10 {
+                        &:nth-child(#{$i}) {
+                            transition: transform .4s $i*.2s;
+                        }
+                    }
+                    @include size(lg) {
+                        transform: translateY(0);
+                    }
+                    &.on {
+                        opacity: 1;
+                        > button {
+                            display: block;
+                        }
+                    }
+                    p {
+                        cursor: pointer;
+                        strong {
+                            display: block;
+                            font-weight: 900;
+                            margin-bottom: 4px;
+                            @include size(lg) {
+                                font-size: 14px;
+                            }
+                        }
+                        span {
+                            display: block;
+                            font-size: 11px;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                        }
+                    }
+                    > button {
+                        position: absolute;
+                        top: 50%;                        
+                        right: -8px;
+                        @include icon(create, #464646);
+                        transform: translateY(-50%);
+                        @include _hide;
+                        display: none;
+                    }
+                }
+                & + .placePage {
+                    display: block;
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: $width;
+                    display: flex;
+                    justify-content: center;
+                    background-color: #EFEFEF;
+                    z-index: 5;
+                    @include size(lg) {
+                        width: 100%;
+                        background-color: #FFFFFF;
+                    }
+                    @include size(sm) {
+                        bottom: 0;
+                    }
+                    li {
+                        width: 20px;
+                        height: 20px;
+                        margin: 6px;
+                        cursor: pointer;
+                        font-size: 14px;
+                        text-align: center;
+                        font-weight: 800;
+                        border-radius: 3px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        &.on {
+                            color: #ffffff;
+                            background-color: rgba(0, 0, 0, .5);
+                        }
+                    }
+                    & + .write {
+                        margin-left: $width;
+                        width: calc(100% - $width);
+                        flex-wrap: initial;
+                        @include size(lg) {
+                            margin: 0;
+                            width: 100%;
+                        }
+                        .courseList {
+                            ul {
+                                flex-wrap: initial;
+                                justify-content: initial;
+                                flex-direction: column;
+                                justify-content: flex-start;
+                                @include size(lg) {
+                                    flex-direction: initial;
+                                    justify-content: initial;
+                                }
+                                li {
+                                    width: 100%;
+                                    @include size(lg) {
+                                        width: auto;
+                                    }
+                                }
+                            }
+                        }
+                        .publish {
+                            width: 62%;
+                            @include size(lg) {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .write {
+        position: relative;
+        display: flex;
+        width: 100%;
+        height: 50%;
+        padding: 20px 0;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        transition: all .3s;
+        box-shadow: 0 1px 2px rgba(60, 64, 67, .3), 0 2px 6px 2px rgba(60, 64, 67, .15);
+        z-index: 1;
+        @include size(lg) {
+            box-shadow: none;
+            background-color: #FFFFFF;
+        }
+        > div {
+            position: relative;
+            min-width: 0;
+            height: 100%;
+            & + div {
+                width: 50%;
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    width: 1px;
+                    left: 0;
+                    background: rgba(0, 0, 0, .2);
+                }
+            }
+            &.courseList {
+                display: flex;
+                flex-grow: 1;
+                width: 50%;
+                @include size(lg) {
+                    position: absolute;
+                    top: -45px;
+                    left: 0;
+                    right: 0;
+                    width: auto;
+                    height: auto;
+                    display: block;
+                }
+                ul {
+                    display: flex;
+                    width: 100%;
+                    padding: 0 2.4em;
+                    overflow-y: auto;
+                    flex-wrap: wrap;
+                    justify-content: space-between;
+                    align-items: flex-start;
+                    align-content: flex-start;
+                    @include size(lg) {
+                        display: block;
+                        padding: .2em 1.4rem;
+                        overflow-x: auto;
+                        overflow-y: hidden;
+                        flex-wrap: initial;
+                        justify-content: initial;
+                        align-items: initial;
+                        align-content: initial;
+                        white-space: nowrap;
+                        -webkit-overflow-scrolling: touch;
+                        &::-webkit-scrollbar {
+                            display: none;
+                        }
+                    }
+                    li {
+                        position: relative;
+                        width: calc(50% - 8px);
+                        padding: 10px 30px 10px 12px;
+                        border-radius: 8px;
+                        margin-bottom: 12px;
+                        cursor: pointer;
+                        border: 1px solid rgb(221, 221, 221);
+                        box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
+                        cursor: move;
+                        &::before {
+                            content: '';
+                            position: absolute;
+                            top: 10px;
+                            left: 10px;
+                            vertical-align: middle;
+                        }
+                        $i: 0;
+                        @each $n in $orders {
+                            $i: $i +1;
+                            &:nth-child(#{$i})::before {
+                                @include icon($n, #8C3FF9, 20px, 20px);
+                            }
+                        }
+                        strong {
+                            display: inline-block;
+                            padding-left: 23px;
+                            font-size: 14px;
+                            font-weight: 900;
+                        }
+                        span {
+                            display: block;
+                            padding-left: 23px;
+                            font-size: 11px;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                        }
+                        button {
+                            position: absolute;
+                            top: 0;
+                            right: 0;
+                            width: 30px;
+                            height: 30px;
+                            @include _hide;
+                            z-index: 2;
+                            cursor: pointer;
+                            &::after {
+                                content: '';
+                                position: absolute;
+                                top: 50%;
+                                left: 50%;
+                                @include icon(xButton, #3E3A39, 14px, 14px);
+                                transform: translate(-50%, -50%);
+                            }
+                        }
+                        @include size(lg) {
+                            display: inline-block;
+                            width: auto;
+                            margin: 0 .3em;
+                            padding: 2px 24px 2px 0;
+                            border-radius: 14px;
+                            background-color: #FFFFFF;
+                            box-shadow: 0 1px 2px rgba(60, 64, 67, .3), 0 2px 6px 2px rgba(60, 64, 67, .15);
+                            &::before {
+                                top: 2px;
+                                left: 2px;
+                                transform: scale(0.8);
+                            }
+                            strong {
+                                font-size: 11px;
+                            }
+                            span {
+                                display: none;
+                            }
+                            button {
+                                top: -3px;
+                                right: -3px;
+                                transform: scale(0.8);
+                            }
+                        }
+                    }
+                }
+            }
+            &.publish {
+                display: flex;
+                flex-direction: column;
+                padding: 0 2.4em;
+                > input {
+                    width: 100%;
+                    padding: 4px 0 10px;
+                    border: 0;
+                    border-bottom: 1px solid rgba(0, 0, 0, .2);
+                    color: #000000;
+                    font-size: 18px;
+                    font-weight: 900;
+                    &::placeholder {
+                        color: #000000;
+                    }
+                }
+                > textarea {
+                    width: 100%;
+                    height: 100%;
+                    margin: 12px 0;
+                    font-size: 14px;
+                    color: #484848;
+                    resize: none;
+                }
+                .attach {
+                    display: flex;
+                    flex-direction: row;
+                    li {
+                        position: relative;
+                        width: 72px;
+                        aspect-ratio: 1/1;
+                        margin-right: .8em;
+                        border-radius: 4px;
+                        border: 1px solid rgba(0, 0, 0, .16);       
+                        &::after {
+                            content: '';
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            @include icon(add, #B5B5B6, 34px, 34px);
+                            transform: translate(-50%, -50%);
+                            z-index: -1;
+                        }
+                        > img {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            right: 0;
+                            bottom: 0;
+                            border-radius: 4px;
+                            object-fit: cover;   
+                            aspect-ratio: 1 / 1;
+                        }
+                        input {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            right: 0;
+                            bottom: 0;
+                            opacity: 0;
+                            cursor: pointer;
+                        }
+                        button {
+                            position: absolute;
+                            top: -6px;
+                            right: -6px;
+                            width: 20px;
+                            height: 20px;
+                            background-color: #FFFFFF;
+                            border-radius: 50%;
+                            box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+                            @include _hide;
+                            z-index: 2;
+                            cursor: pointer;
+                            &::after {
+                                content: '';
+                                position: absolute;
+                                top: 50%;
+                                left: 50%;
+                                @include icon(xButton, #000000, 20px, 20px);
+                                transform: translate(-50%, -50%);
+                            }
+                        }
+                    }
+                    & + button {
+                        display: flex;
+                        justify-content: center;
+                        margin: 12px 0 0;
+                        padding: 8px 30px;
+                        color: #FFFFFF;
+                        font-size: 14px;
+                        font-weight: 900;
+                        background-color: #464646;
+                        border-radius: 3px;
+                        margin-left: auto;
+                    }
+                }
+                @include size(lg) {
+                    width: 100%;
+                    .attach {
+                        & + button {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .overlay {
+        position: relative;
+        padding: .5em 2em .3em .5em;
+        background-color: #FFFFFF;
+        border-radius: 6px;
+        box-shadow: 3px 3px 12px rgba(0,0,0,.4);
+        transform: translateY(-52px);
+        overflow: hidden;
+        > strong {
+            display: block;
+            margin-bottom: -4px;
+            font-size: 12px;
+            font-weight: 900;
+        }
+        > span {
+            margin-right: 4px;
+            font-size: 10px;
+        }
+        > a {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 26px;
+            border-left: 1px solid rgba(0, 0, 0, .2);
+            @include _hide;
+            &::after {
+                content: '';
+                @include icon(home, #464646, 14px, 14px);
+            }
+        }
+    }
+    .view {
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+        @include size(lg) {
+            flex-direction: column;
+            .service {
+                height: 100%;
+                padding-top: 42px;
+                overflow-y: auto;
+            }
+            .inform {
+
+            
+            }
+        }
+        > div {
+            width: 50%;
+            @include size(lg) {
+                width: 100%;
+                
+            }
+        }
+        .service {
+            position: relative;
+            .tab {
+                position: relative;
+                margin-left: auto;
+                font-size: 12px;
+                font-weight: 600;
+                &::after {
+                    content: '';
+                    display: inline-block;
+                    margin-top: -2px;
+                    margin-left: 8px;
+                    @include icon(cource-arrow, #464646, 6px, 11px);
+                    vertical-align: middle;
+                }
+                @include size(lg) {
+                    display: none;
+                }
+            }
+            .courseRoot {
+                position: relative;
+                height: 100%;
+                padding: 1.8rem;
+                display: flex;
+                flex-direction: column;
+                @include size(lg) {
+                    padding-top: 0;
+                    height: auto;
+                    &::after {
+                        display: none;
+                    }
+                }
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    right: 0;
+                    width: 1px;
+                    background-color: rgba(0, 0, 0, .1);
+                }
+                .maps {
+                    width: 100%;
+                    height: 40%;
+                    margin: .6em 0 0;
+                    border-radius: 14px;
+                    overflow: hidden;
+                    @include size(lg) {
+                        aspect-ratio: 16 / 10;
+                        height: auto;
+                    }
+                }
+                .orderList {
+                    height: 60%;
+                    margin: 1em .4em 0;
+                    overflow-y: auto;
+                    @include size(lg) {
+                        height: auto;
+                        overflow: initial;
+                    }
+                    ul {
+                        padding: .6em 0 0;
+                        > li {
+                            position: relative;
+                            padding-left: 32px;
+                            padding-bottom: 2px;
+                            margin-bottom: 14px;
+                            &::after {
+                                content: '';
+                                position: absolute;
+                                top: 24px;
+                                bottom: 0;
+                                left: 7px;
+                                width: 4px;
+                                background-color: #9FA0A0;
+                                border-radius: 4px;
+                            }
+                            &::before {
+                                content: '';
+                                position: absolute;
+                                top: -1px;
+                                left: 0;
+                                vertical-align: middle;
+                            }
+                            $i: 0;
+                            @each $n in $orders {
+                                $i: $i +1;
+                                &:nth-child(#{$i})::before {
+                                    @include icon($n, #8C3FF9, 20px, 20px);
+                                }
+                            }
+                            > strong {
+                                display: block;
+                                margin-bottom: 8px;
+                                font-weight: 900;
+                                font-size: 16px;
+                                color: #464646;
+                                cursor: pointer;
+                            }
+                            > span {
+                                display: block;
+                                font-size: 12px;
+                                opacity: .7;
+                            }
+                        }
+                    }
+                }
+            }
+            .coursePhoto {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                opacity: 0;
+                z-index: -1;
+                &.active {
+                    opacity: 1;
+                    z-index: 1;
+                }
+                @include size(lg) {
+                    position: relative;
+                    top: auto;
+                    left: auto;
+                    bottom: auto;
+                    right: auto;
+                    padding: 1.8rem 1.8rem 4.6rem;
+                    opacity: 1;
+                    z-index: 1;
+                }
+                .tab {
+                    position: absolute;
+                    top: 12px;
+                    left: 12px;
+                    font-size: 0;
+                    line-height: 0;
+                    margin: 0;
+                    padding: 9px 9px 9px 2px;
+                    border-radius: 14px;
+                    background-color: rgba(255, 255, 255, .8);
+                    box-shadow: 0 2px 4px rgba(0,0,0,0.2), 0 -1px 0px rgba(0,0,0,0.02);
+                    z-index: 10;
+                    &::after {
+                        @include icon(arrow-right, #3E3A39, 26px, 26px);
+                        transform: rotate(180deg);
+                    }
+                }
+                .swiper {
+                    top: 50%;
+                    transform: translateY(-50%);
+                    @include _swiper__navigation;
+                    @include size(lg) {
+                        top: 0;
+                        transform: translateY(0);
+                        padding-bottom: 24px;
+                        z-index: 1;
+                    }
+                    img {
+                        border-radius: 14px;
+                        object-fit: cover;
+                    }
+                    .swiper-pagination {
+                        bottom: 8%;
+                        @include size(lg) {
+                            bottom: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+

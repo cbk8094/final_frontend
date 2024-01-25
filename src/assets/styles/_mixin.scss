@@ -1,0 +1,89 @@
+$widths: (
+  xs: 320px,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+);
+
+@mixin size($prefix) {
+  @if (map-has-key($map: $widths, $key: $prefix)) {
+    $px: map-get(
+      $map: $widths,
+      $key: $prefix,
+    );
+    @media screen and (max-width: $px) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin icon($icon, $color, $width: 24px, $height: 24px) {
+  content: '';
+  display: inline-block;
+  width: $width;
+  height: $height;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-image: _svg($icon, $color);
+  background-position: center;
+}
+
+@mixin _hide {font-size: 0; line-height: 0;}
+@mixin _profile {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  // background-color: $primary-white;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-image: _svg(default, #464646);
+  background-position: center;
+  margin-right: 12px;
+  border-radius: 50%;
+  box-shadow: 1px 1px 3px #464646;
+  vertical-align: middle;
+}
+@mixin _swiper__navigation {
+  .swiper-button-prev,
+  .swiper-button-next {
+      width: 32px;
+      height: 32px;
+      &.swiper-button-disabled {opacity: 0;}
+      &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 26px;
+          height: 26px;
+          background-color: rgba(255, 255, 255, .7);
+          border-radius: 50%;
+          box-shadow: 1px 0 4px #000000;
+      }
+      &::after {
+          position: absolute;
+          top: 8px; 
+          content: '';
+          width: 10px; 
+          height: 10px; 
+          border-top: 3px solid #000000;
+          border-right: 3px solid #000000;          
+      }
+  }
+  .swiper-button-prev {
+      &::after {
+          left: 10px; 
+          transform: rotate(225deg);
+      }
+  }
+  .swiper-button-next {
+      &::after {
+          right: 16px; 
+          transform: rotate(45deg);
+      }
+  }
+}

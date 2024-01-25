@@ -1,0 +1,149 @@
+@import "./svg";
+@import "./mixin";
+
+.addFeed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+
+  .feedTitle {
+    border-bottom: 3px solid rgba(219, 219, 219);
+    width: 100%;
+    margin: 40px 0 10px 10px;
+
+    input {
+      resize: none;
+      width: 100%;
+      height: 40px !important;
+      margin: 10px 0 0 0px;
+      font-size: 20px;
+      border: 0;
+      font-weight: 900;
+    }
+  }
+  .addFeed {
+    display: flex;
+
+    height: 100%;
+  }
+
+  .feedImg {
+    width: 100%;
+    display: flex;
+    min-width: 50%;
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .recordImg {
+    display: flex;
+    img {
+      width: 84px;
+      height: 84px;
+      object-fit: cover;
+      margin: 0 0 0 10px;
+    }
+    i {
+      @include icon(xButton, #3e3a39, 20px, 20px);
+      cursor: pointer;
+      position: absolute;
+      transform: translateX(-20px);
+    }
+  }
+  .feedRecordinner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    min-width: 50%;
+    padding: 30px 40px 0 40px;
+
+    .feedContent {
+      height: 100%;
+      padding: 0 0 0 10px;
+
+      textarea {
+        color: #a0a0a0;
+        height: 100%;
+        resize: none;
+        font-size: 14px;
+        width: 100%;
+      }
+    }
+  }
+
+  .feedRecord {
+    width: 100%;
+    object-fit: cover;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0 10px 0;
+    min-width: 50%;
+  }
+}
+
+.addIcon {
+  padding: 20px;
+  border: 1px solid rgb(219, 219, 219);
+  @include icon(add, #dbdbdb, 84px, 84px);
+  margin: 0 0 0 10px;
+  cursor: pointer;
+}
+
+.feedBtn {
+  color: rgb(219, 219, 219);
+  display: flex;
+  justify-content: center;
+  padding: 0 0 30px 0;
+}
+
+.addFeed button {
+  background-color: #3e3a39;
+  color: #ffffff;
+  width: 400px;
+  height: 50px;
+  font-weight: 900;
+}
+@media screen and (max-width: 994px) {
+  .addFeed {
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    .feedImg {
+      max-height: 40%;
+      display: flex;
+    }
+    .recordImg {
+      display: flex;
+      object-fit: cover;
+      img {
+        width: 84px;
+        height: 84px;
+      }
+    }
+    .feedRecordinner {
+      padding: 30px 10px 0 10px;
+    }
+
+    .addIcon {
+      @include icon(add, #dbdbdb, 84px, 84px);
+    }
+    @media screen and (max-width: 994px) {
+      .feedBtn {
+        transform: translateY(60px);
+      }
+    }
+  }
+}
+#fileInput {
+  display: none !important;
+}

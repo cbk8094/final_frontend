@@ -1,0 +1,71 @@
+$red-heart: #FF0000;
+
+.hearts-like {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(-50%);
+    .heart-like {
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        margin: 4px;
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            width: 8px;
+            height: 16px;
+            background-color: $red-heart;
+            border-radius: 8px 8px 0 0;
+            transform: rotate(-45deg);
+            transform-origin: 0 100%;
+        }
+        &::after {
+            left: 0;
+            transform: rotate(45deg);
+            transform-origin: 100% 100%;
+        }
+        &:nth-child(even) {animation: 2.8s even linear;}
+        &:nth-child(odd) {animation: 2.8s odd linear;}
+        &:nth-child(1) {animation-delay: 0.2s;}
+        &:nth-child(2) {animation-delay: 0.3s;}
+        &:nth-child(3) {animation-delay: 0.6s;}
+        &:nth-child(4) {animation-delay: 0.8s;}
+        &:nth-child(5) {animation-delay: 1.0s;}
+        &:nth-child(6) {animation-delay: 1.2s;}
+        &:nth-child(7) {animation-delay: 1.4s;}
+        &:nth-child(8) {animation-delay: 1.6s;}
+        &:nth-child(9) {animation-delay: 1.8s;}
+        &:nth-child(10) {animation-delay: 2.1s;}
+        &:nth-child(11) {animation: none;}
+    }
+}
+
+@keyframes even {
+    0% {
+        transform: translate(5px, 10px) scale(1);
+        opacity: 1;
+        filter: blur(0px);
+    }
+    100% {
+        transform: translate(0px, -480px) scale(1.5);
+        opacity: 0;
+        filter: blur(5px);
+    }
+}
+
+@keyframes odd {
+    0% {
+      transform: translate(0, 0) scale(1);
+      opacity: 1;
+      filter: blur(0px);
+    }
+    100% {
+      transform: translate(-60px, -480px) scale(1.5);
+      opacity: 0;
+      filter: blur(5px);
+    }
+  }

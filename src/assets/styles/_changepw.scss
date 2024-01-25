@@ -1,0 +1,74 @@
+@import "svg";
+@import "mixin";
+.changepw-header {
+  display: flex;
+  align-items: center;
+}
+.change-frame {
+  width: 100%;
+  margin: 30px;
+  .changepw-icon {
+    @include icon(changepw, #464646, 40px, 47px);
+    margin-right: 15px;
+  }
+  h2 {
+    font-size: 18pt;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  h3 {
+    font-size: 13pt;
+  }
+  .current-pw {
+    margin-top: 30px;
+    margin-bottom: 15px;
+    width: 75%;
+    border: 1px solid #646464;
+    border-radius: 40px;
+    padding: 10px 15px;
+  }
+  .change-pw {
+    margin-top: 15px;
+    width: 100%;
+    border: 1px solid #646464;
+    border-radius: 40px;
+    padding: 10px 15px;
+  }
+  .passwordCheck {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #fff;
+    background: #898989;
+    padding: 11px 30px;
+    border-radius: 50px;
+    transition: 0.2s ease-in-out;
+  }
+  .passwordCheck:hover {
+    background: #464646;
+  }
+  .check-pw {
+    margin-top: 20px;
+    width: 100%;
+    border: 1px solid #646464;
+    border-radius: 40px;
+    padding: 10px 15px;
+  }
+  .submit-btn {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    button {
+      font-weight: bold;
+      color: #fff;
+      background: #898989;
+      padding: 15px 40px;
+      border-radius: 50px;
+      transition: 0.2s ease-in-out;
+    }
+    button:hover {
+      background: #464646;
+    }
+  }
+}
