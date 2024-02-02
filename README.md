@@ -36,7 +36,8 @@ DB 명세서
 - DB 명세서
 
 디자인
-# Figma :https://www.figma.com/file/8iwfRwvip10JUyIMfvdBeP/%5BFinalProject%5Dwoute?type=design&node-id=0%3A1&mode=design&t=B0uUN0prKl9orE28-1
+# Figma
+###### https://www.figma.com/file/8iwfRwvip10JUyIMfvdBeP/%5BFinalProject%5Dwoute?type=design&node-id=0%3A1&mode=design&t=B0uUN0prKl9orE28-1
 
 # Git - Commit Message
 
