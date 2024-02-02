@@ -8,14 +8,14 @@ Final Project BE: Woute
 
 http://3.36.219.193
 
-# 일정 (2023. 12. 08 ~ 2014. 01. 12)
+## 일정 (2023. 12. 08 ~ 2014. 01. 12)
 ###### 1차 스프린트 (12월 8일 ~ 12월 13일)
 ###### 2차 스프린트 ( 12월 14일 ~ 12월 24일 )
 ###### 3차 스프린트 ( 12월 25일 ~ 12월 31일 )
 ###### 4차 스프린트 ( 1월 1일 ~ 1월 5일 )
 ###### 5차 스프린트 ( 1월 8일 ~ 1월 12일 )
 
-# 주요기능
+## 주요기능
 ###### 기능 명세서
 ###### 반응형으로 제작
 ###### 카카오 지도 API를 활용하여 코스 등록하기
@@ -30,15 +30,14 @@ http://3.36.219.193
 ###### 웹소켓을 활용한 1:1 채팅
 ###### 피드 등록 시 드래그 앤 드롭으로 코스 리스트 위치 변경 가능
 ###### browser-image-compression 라이브러리로 이미지 최적화
-# API
+## API
 ###### 프로젝트 API
 ###### 카카오 지도
 
 
-# Figma
+## Figma
 ###### https://www.figma.com/file/8iwfRwvip10JUyIMfvdBeP/%5BFinalProject%5Dwoute?type=design&node-id=0%3A1&mode=design&t=B0uUN0prKl9orE28-1
 
-# Git - Commit Message
 
 ## Commit Type
 
